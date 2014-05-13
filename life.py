@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 ### game of life
 ### Author: Edoardo Bompiani
-### Date: 15/04/2014
-### Version: 0.6
+### Date: 12/05/2014
+### Version: 0.7
 
 import random
 
@@ -12,139 +12,11 @@ def evolve( array ):
    columns = len(array[0])
    array2 = array
    
-# i=0, j=0 
-   totale = array[rows-1][columns-1]+array[rows-1][0]+array[rows-1][1]+array[0][columns-1]+array[0][0]+array[0][1]+array[1][columns-1]+array[1][0]+array[1][1]
-   if    array[0][0] == 0:
-      if totale == 3:
-         array2[0][0]=1
-      else:
-         array2[0][0]=0
-   if array[0][0] == 1:
-      if totale <= 2:
-         array2[0][0]=0
-      elif totale <= 4:
-         array2[0][0]=1
-      else:
-         array2[0][0]=0
-# i=rows-1, j=0 
-   totale = array[rows-2][columns-1]+array[rows-2][0]+array[rows-2][1]+array[rows-1][columns-1]+array[rows-1][0]+array[rows-1][1]+array[0][columns-1]+array[0][0]+array[0][1]
-   if    array[rows-1][0] == 0:
-      if totale == 3:
-         array2[rows-1][0]=1
-      else:
-         array2[rows-1][0]=0
-   if array[rows-1][0] == 1:
-      if totale <= 2:
-         array2[rows-1][0]=0
-      elif totale <= 4:
-         array2[rows-1][0]=1
-      else:
-         array2[rows-1][0]=0
-
-# i=0, j=columns-1
-   totale = array[rows-1][columns-2]+array[rows-1][columns-1]+array[rows-1][0]+array[0][columns-2]+array[0][columns-1]+array[0][0]+array[1][columns-2]+array[1][columns-1]+array[1][0]
-   if    array[0][columns-1] == 0:
-      if totale == 3:
-         array2[0][columns-1]=1
-      else:
-         array2[0][columns-1]=0
-   if array[0][columns-1] == 1:
-      if totale <= 2:
-         array2[0][columns-1]=0
-      elif totale <= 4:
-         array2[0][columns-1]=1
-      else:
-         array2[0][columns-1]=0
-
-# i=rows-1, j=columns-1 
-   totale = array[rows-2][columns-2]+array[rows-2][columns-1]+array[rows-2][0]+array[rows-1][columns-2]+array[rows-1][columns-1]+array[rows-1][0]+array[0][columns-2]+array[0][columns-1]+array[0][0]
-   if    array[rows-1][columns-1] == 0:
-      if totale == 3:
-         array2[rows-1][columns-1]=1
-      else:
-         array2[rows-1][columns-1]=0
-   if array[rows-1][columns-1] == 1:
-      if totale <= 2:
-         array2[rows-1][columns-1]=0
-      elif totale <= 4:
-         array2[rows-1][columns-1]=1
-      else:
-         array2[rows-1][columns-1]=0
-
-# i=0
-   for j in range( 1, columns-2 ):
-      totale = array[rows-1][j-1]+array[rows-1][j]+array[rows-1][j+1]+array[0][j-1]+array[0][j]+array[0][j+1]+array[1][j-1]+array[1][j]+array[1][j+1]
-      #print( totale )
-      if    array[0][j] == 0:
-         if totale == 3:
-            array2[0][j]=1
-         else:
-            array2[0][j]=0
-      if array[0][j] == 1:
-         if totale <= 2:
-            array2[0][j]=0
-         elif totale <= 4:
-            array2[0][j]=1
-         else:
-            array2[0][j]=0
-
-# i=rows-1
-   for j in range( 1, columns-2 ):
-      totale = array[rows-2][j-1]+array[rows-2][j]+array[rows-2][j+1]+array[rows-1][j-1]+array[rows-1][j]+array[rows-1][j+1]+array[0][j-1]+array[0][j]+array[0][j+1]
-      #print( totale )
-      if    array[rows-1][j] == 0:
-         if totale == 3:
-            array2[rows-1][j]=1
-         else:
-            array2[rows-1][j]=0
-      if array[rows-1][j] == 1:
-         if totale <= 2:
-            array2[rows-1][j]=0
-         elif totale <= 4:
-            array2[rows-1][j]=1
-         else:
-            array2[rows-1][j]=0
-
-# j=0
-   for i in range( 1, rows-2 ):
-      totale = array[i-1][columns-1]+array[i-1][0]+array[i-1][1]+array[i][columns-1]+array[i][0]+array[i][1]+array[i+1][columns-1]+array[i+1][0]+array[i+1][1]
-      #print( totale )
-      if    array[i][0] == 0:
-         if totale == 3:
-            array2[i][0]=1
-         else:
-            array2[i][0]=0
-      if array[i][0] == 1:
-         if totale <= 2:
-            array2[i][0]=0
-         elif totale <= 4:
-            array2[i][0]=1
-         else:
-            array2[i][0]=0
-
-# j=columns-1
-   for i in range( 1, rows-2 ):
-      totale = array[i-1][columns-2]+array[i-1][columns-1]+array[i-1][0]+array[i][columns-2]+array[i][columns-1]+array[i][0]+array[i+1][columns-2]+array[i+1][columns-1]+array[i+1][0]
-      #print( totale )
-      if    array[i][columns-2] == 0:
-         if totale == 3:
-            array2[i][columns-2]=1
-         else:
-            array2[i][columns-2]=0
-      if array[i][columns-2] == 1:
-         if totale <= 2:
-            array2[i][columns-2]=0
-         elif totale <= 4:
-            array2[i][columns-2]=1
-         else:
-            array2[i][columns-2]=0
-
-# other cases
-   for i in range( 1, rows-2 ):
-      for j in range( 1, columns-2 ):
-         totale = array[i-1][j-1]+array[i-1][j]+array[i-1][j+1]+array[i][j-1]+array[i][j]+array[i][j+1]+array[i+1][j-1]+array[i+1][j]+array[i+1][j+1]
+   for i in range( 0, rows-1 ):
+      for j in range( 0, columns-1 ):
+         totale = array[(i-1)%(rows)][(j-1)%(columns)]+array[(i-1)%(rows)][j%(columns)]+array[(i-1)%(rows)][(j+1)%(columns)]+array[i%(rows)][(j-1)%(columns)]+array[i%(rows)][j%(columns)]+array[i%(rows)][(j+1)%(columns)]+array[(i+1)%(rows)][(j-1)%(columns)]+array[(i+1)%(rows)][j%(columns)]+array[(i+1)%(rows)][(j+1)%(columns)]
          #print( totale )
-         if    array[i][j] == 0:
+         if array[i][j] == 0:
             if totale == 3:
                array2[i][j]=1
             else:
@@ -179,7 +51,7 @@ def start_configuration( lenght = 6 ):
    return board
 
 board = [[]]
-board = start_configuration( 6 )
+board = start_configuration( 40 )
       
 for i,v in enumerate(board):
    print(board[i])
@@ -194,6 +66,7 @@ while True:
 
 
 ### History:
+### 0.7 - utilizzo la funzione modulo per accorpare su un solo caso la varia casistica nel calcolo della generazione successiva
 ### 0.6 - fixed evolve calculation
 ### 0.5 - aggiungo configurazione iniziale random
 ### 0.4 - completed loop for progressing evolution
