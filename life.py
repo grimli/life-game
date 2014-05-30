@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import random
+from tkinter import *
+
 
 class CellularAutoma:
    def __init__(self, lenght=6):
@@ -19,6 +21,14 @@ class CellularAutoma:
          self.board.append( line )
             
       self.board.remove([])
+
+      #inizializzo ambiente grafico 
+      self.master = Tk()
+      self.master.title('life game')
+      self.w = Canvas(self.master, width=lenght*10, height=lenght*10)
+      self.w.pack()
+
+      #self.master.mainloop()
 
    def evolve( self ):
    ### esegue lo step di evoluzione del gioco life su una tabella sferica
@@ -47,15 +57,22 @@ class CellularAutoma:
 
    def show( self ):
       for i,v in enumerate(self.board):
-         print(self.board[i])
-
+         for j,w in enumerate( self.board[i] ):
+            if (self.board[i][j] == 0):
+               self.w.create_rectangle(i*10, j*10, i*10+10, j*10+10, fill="blue")
+            else:
+               self.w.create_rectangle(i*10, j*10, i*10+10, j*10+10, fill="yellow")
 
 dim = input( "Inserisci la dimensione della board: ") 
 board = CellularAutoma( int(dim) )
 
+print ("ciao\n")
+
 board.show()
+print ("ciao\n")
 
 while True:
+   print ("ciao\n")
    ok = input()
    board.evolve( )
    board.show()
