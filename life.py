@@ -5,7 +5,7 @@ from tkinter import *
 
 class CellularAutoma:
    def __init__(self, lenght=6):
-   ### genera la tabella iniziale quadrata e di dimensione iniziale lenght
+   """genera la tabella iniziale quadrata e di dimensione iniziale lenght"""
       self.board = [[]]
       line = []
       random.seed()
@@ -31,7 +31,7 @@ class CellularAutoma:
       #self.master.mainloop()
 
    def evolve( self ):
-   ### esegue lo step di evoluzione del gioco life su una tabella sferica
+   """esegue lo step di evoluzione del gioco life su una tabella sferica"""
       rows = len(self.board)
       columns = len(self.board[0])
       board2 = [[0 for j in range(rows)] for i in range(columns)]
@@ -56,6 +56,7 @@ class CellularAutoma:
       self.board = board2
 
    def show( self ):
+   """Gives a graphical representation of the data"""
       for i,v in enumerate(self.board):
          for j,w in enumerate( self.board[i] ):
             if (self.board[i][j] == 0):
