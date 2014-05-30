@@ -62,17 +62,15 @@ class CellularAutoma:
                self.w.create_rectangle(i*10, j*10, i*10+10, j*10+10, fill="blue")
             else:
                self.w.create_rectangle(i*10, j*10, i*10+10, j*10+10, fill="yellow")
-
+############
+### main ###
+############
 dim = input( "Inserisci la dimensione della board: ") 
 board = CellularAutoma( int(dim) )
 
-print ("ciao\n")
-
 board.show()
-print ("ciao\n")
 
 while True:
-   print ("ciao\n")
-   ok = input()
    board.evolve( )
    board.show()
+   board.master.update()
