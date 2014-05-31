@@ -57,6 +57,7 @@ class CellularAutoma:
 
    def show( self ):
       """Gives a graphical representation of the data"""
+      self.w.delete(ALL)
       for i,v in enumerate(self.board):
          for j,w in enumerate( self.board[i] ):
             if (self.board[i][j] == 0):
