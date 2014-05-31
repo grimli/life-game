@@ -4,9 +4,10 @@ from tkinter import *
 
 
 class CellularAutoma:
-   def __init__(self, lenght=6):
+   def __init__(self, lenght=6, scale=10):
       """genera la tabella iniziale quadrata e di dimensione iniziale lenght"""
       self.board = [[]]
+      self.scale = scale
       line = []
       random.seed()
       
@@ -25,7 +26,7 @@ class CellularAutoma:
       #inizializzo ambiente grafico 
       self.master = Tk()
       self.master.title('life game')
-      self.w = Canvas(self.master, width=lenght*10, height=lenght*10)
+      self.w = Canvas(self.master, width=lenght*self.scale, height=lenght*self.scale)
       self.w.pack()
 
       #self.master.mainloop()
@@ -61,14 +62,14 @@ class CellularAutoma:
       for i,v in enumerate(self.board):
          for j,w in enumerate( self.board[i] ):
             if (self.board[i][j] == 0):
-               self.w.create_rectangle(i*10, j*10, i*10+10, j*10+10, fill="blue")
+               self.w.create_rectangle(i*self.scale, j*self.scale, i*self.scale+self.scale, j*self.scale+self.scale, fill="blue")
             else:
-               self.w.create_rectangle(i*10, j*10, i*10+10, j*10+10, fill="yellow")
+               self.w.create_rectangle(i*self.scale, j*self.scale, i*self.scale+self.scale, j*self.scale+self.scale, fill="yellow")
 ############
 ### main ###
 ############
 dim = input( "Inserisci la dimensione della board: ") 
-board = CellularAutoma( int(dim) )
+board = CellularAutoma( lenght=int(dim), scale=5)
 
 board.show()
 
