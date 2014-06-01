@@ -37,8 +37,8 @@ class CellularAutoma:
       columns = len(self.board[0])
       board2 = [[0 for j in range(rows)] for i in range(columns)]
 
-      for i in range( 0, rows-1 ):
-         for j in range( 0, columns-1 ):
+      for i in range( 0, rows ):
+         for j in range( 0, columns ):
             totale = self.board[(i-1)%(rows)][(j-1)%(columns)]+self.board[(i-1)%(rows)][j%(columns)]+self.board[(i-1)%(rows)][(j+1)%(columns)]+self.board[i%(rows)][(j-1)%(columns)]+self.board[i%(rows)][j%(columns)]+self.board[i%(rows)][(j+1)%(columns)]+self.board[(i+1)%(rows)][(j-1)%(columns)]+self.board[(i+1)%(rows)][j%(columns)]+self.board[(i+1)%(rows)][(j+1)%(columns)]
             #print( totale )
             if self.board[i][j] == 0:
